@@ -1,0 +1,11 @@
+Metadata-Version: 2.1
+Name: picoweb
+Version: 1.8.2
+Summary: A very lightweight, memory-efficient async web framework for Pycopy (https://github.com/pfalcon/pycopy) and its uasyncio module.
+Home-page: https://github.com/pfalcon/picoweb
+Author: Paul Sokolovsky
+Author-email: pfalcon@users.sourceforge.net
+License: MIT
+Requires-Dist: pycopy-uasyncio
+Requires-Dist: pycopy-pkg-resources
+

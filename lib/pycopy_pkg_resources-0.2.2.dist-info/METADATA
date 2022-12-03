@@ -1,0 +1,9 @@
+Metadata-Version: 2.1
+Name: pycopy-pkg-resources
+Version: 0.2.2
+Summary: pkg_resources module for Pycopy
+Home-page: https://github.com/pfalcon/pycopy-lib
+Author: Paul Sokolovsky
+Author-email: pycopy-dev@googlegroups.com
+License: MIT
+

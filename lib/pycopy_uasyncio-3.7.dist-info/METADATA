@@ -1,0 +1,10 @@
+Metadata-Version: 2.1
+Name: pycopy-uasyncio
+Version: 3.7
+Summary: Lightweight asyncio-like library for Pycopy, built around native Python coroutines.
+Home-page: https://github.com/pfalcon/pycopy-lib
+Author: Paul Sokolovsky
+Author-email: pycopy-dev@googlegroups.com
+License: MIT
+Requires-Dist: pycopy-uasyncio.core
+
