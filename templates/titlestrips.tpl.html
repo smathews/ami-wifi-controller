@@ -5,4 +5,26 @@
     {% include "strip.tpl.html" i,s %} 
 {% endfor %}
 </div>
+
+<script>
+    $(".title").on("click", addSong)
+    $(".number").on("click", addSong)
+
+    function addSong() {
+        songId = $(this).attr('id')
+        console.log(songId)
+
+        fetch("/add_song", {
+            method: "POST",
+            headers: {
+                "Contest-Type": "application/json",
+            },
+            body: JSON.stringify({ song: songId })
+        }).then(async response => {
+            data = await response.json();
+            console.log(data)
+        })
+    }
+</script>
+
 {% include "tail.tpl.html" %}
