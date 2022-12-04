@@ -3,6 +3,23 @@ import network
 import logger
 import os
 import json
+import uasyncio
+from machine import Pin
+
+class PlaylistManager:
+    def __init__(self, timeout=5):
+        self.timeout = timeout
+        self._lock = uasyncio.Lock()
+        self._playlist = []
+
+    async def __aenter__(self):
+        await uasyncio.wait_for(self._lock.acquire(), timeout=self.timeout)
+        return self._playlist
+    
+    async def __aexit__(self, *exc):
+        self._lock.release()
+
+leds = [Pin(0,Pin.OUT), Pin(1,Pin.OUT), Pin(2,Pin.OUT), Pin(3,Pin.OUT)]
 
 collection = [
     {
@@ -37,7 +54,7 @@ collection = [
     },
 ]
 
-playlist = []
+playlist = PlaylistManager()
 
 ap = network.WLAN(network.AP_IF)
 ap.config(essid="foobar", password="foobarfoobar")
@@ -75,10 +92,29 @@ def add_song(req, resp):
         return
 
     data = yield from parse_req_json(req)
-    playlist.append(data["song"])
+    song = int(data["song"])
+    uasyncio.create_task(add_to_playlist(song))
 
     yield from picoweb.start_response(resp)
-    yield from resp.awrite(json.dumps({"success": "true", "playlist": playlist}))
+    yield from resp.awrite(json.dumps({"success": "true"}))
+
+async def add_to_playlist(song):
+    async with playlist as play:
+        play.append(song)
+
+async def apply_playlist():
+    while True:
+        async with playlist as play:
+            if len(play) > 0:
+                song = play.pop()
+                print(song)
+                pos = get_pos_nums(song)
+                for p in pos:
+                    leds[p].high()
+                    await uasyncio.sleep(0.5)
+                    leds[p].low()
+                    await uasyncio.sleep(0.2)
+        await uasyncio.sleep(2)
 
 def parse_req_json(req):
     size = int(req.headers[b"Content-Length"])
@@ -86,5 +122,15 @@ def parse_req_json(req):
     obj = json.loads(data)
     return obj
 
+def get_pos_nums(num):
+    pos_num=[]
+    while num != 0:
+        pos_num.append(num%10)
+        num=num//10
+    pos_num.reverse()
+    return pos_num
+
 # Send our logger in, ulogger is the default (its dependencies are too large for rpico)
+uasyncio.create_task(apply_playlist())
 app.run(log=logger, debug=True, host="0.0.0.0", port=80)
+
