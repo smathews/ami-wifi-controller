@@ -1,13 +1,13 @@
 {% args pos,single %}
 <div class="strip {{single["color"]}}">
     <div class="numbers">
-        <div class="number">
+        <div class="number" id="{{pos+100}}">
             <span>{{pos+100}}</span>
         </div>
         <div class="number-divider">
             <div class="triangle-right"></div>
         </div>
-        <div class="number">
+        <div class="number" id="{{pos+200}}">
             <span>{{pos+200}}</span>
         </div>
     </div>
