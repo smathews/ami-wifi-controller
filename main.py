@@ -2,6 +2,7 @@ import picoweb
 import network
 import logger
 import os
+import json
 
 collection = [
     {
@@ -73,12 +74,17 @@ def add_song(req, resp):
         yield from resp.awrite("405 Method Not Allowed\r\n")
         return
 
-    yield from req.read_form_data()
-    playlist.append(req.form["song"])
-    print(playlist)
+    data = yield from parse_req_json(req)
+    playlist.append(data["song"])
 
     yield from picoweb.start_response(resp)
-    yield from resp.awrite("{\"success\": \"true\"}")
+    yield from resp.awrite(json.dumps({"success": "true", "playlist": playlist}))
+
+def parse_req_json(req):
+    size = int(req.headers[b"Content-Length"])
+    data = yield from req.reader.readexactly(size)
+    obj = json.loads(data)
+    return obj
 
 # Send our logger in, ulogger is the default (its dependencies are too large for rpico)
 app.run(log=logger, debug=True, host="0.0.0.0", port=80)
