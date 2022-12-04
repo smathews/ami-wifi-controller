@@ -74,3 +74,34 @@
 	border-bottom: 5px solid transparent;
     margin-left:8px;    
 }
+
+/* Strip Colors */
+
+/* Green */
+
+.strip.green {
+    border-color: limegreen;
+}
+
+.green .title {
+    background-color: lightgreen;
+}
+
+.green .artist {
+    background-color: limegreen;
+}
+
+/* Blue */
+
+
+.strip.blue {
+    border-color: cornflowerblue;
+}
+
+.blue .title {
+    background-color: skyblue;
+}
+
+.blue .artist {
+    background-color: cornflowerblue;
+}
