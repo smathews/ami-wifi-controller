@@ -3,7 +3,7 @@ import network
 import logger
 import os
 
-song_collection = [
+collection = [
     {
         "artist": "Art of Noise",
         "color": "green",
@@ -62,7 +62,7 @@ app.pkg = None
 @app.route("/")
 def index(req, resp):
     yield from picoweb.start_response(resp)
-    yield from app.render_template(resp, "titlestrips.tpl.html", (song_collection,))
+    yield from app.render_template(resp, "titlestrips.tpl.html", (collection,))
 
 # Send our logger in, ulogger is the default (its dependencies are too large for rpico)
 app.run(log=logger, debug=True, host="0.0.0.0", port=80)

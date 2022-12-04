@@ -1,7 +1,7 @@
-{% args songs %}
+{% args singles %}
 {% include "head.tpl.html" "Title Strips" %}
 <div id="strips">
-{% for i,s in enumerate(songs) %}
+{% for i,s in enumerate(singles) %}
     {% include "strip.tpl.html" i,s %} 
 {% endfor %}
 </div>
