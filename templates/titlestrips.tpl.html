@@ -1,13 +1,8 @@
+{% args songs %}
 {% include "head.tpl.html" "Title Strips" %}
 <div id="strips">
-{% for i in range(10) %}
-    {% if i % 2 %}
-        {% include "strip.tpl.html" "green" %} 
-    {% elif i % 3 %}
-        {% include "strip.tpl.html" "blue" %}
-    {% else %}
-        {% include "strip.tpl.html" "pink" %}
-    {% endif %}
+{% for i,s in enumerate(songs) %}
+    {% include "strip.tpl.html" i,s %} 
 {% endfor %}
 </div>
 {% include "tail.tpl.html" %}
