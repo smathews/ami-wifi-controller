@@ -1,3 +1,7 @@
-{% include "head.tpl.html" "Title Strips"%}
-<h1>This is a test, again</h1>
+{% include "head.tpl.html" "Title Strips" %}
+<div id="strips">
+{% for i in range(10) %}
+    {% include "strip.tpl.html" %}
+{% endfor %}
+</div>
 {% include "tail.tpl.html" %}

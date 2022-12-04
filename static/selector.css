@@ -1,0 +1,76 @@
+#strips {
+    overflow: hidden;
+}
+
+.strip {
+    width: 240px;
+    height: 66px;
+    float: left;
+    border: solid;
+    border-width: 2px;
+    border-color: hotpink;
+    margin: 4px;
+}
+
+.numbers {
+    height: 100%;
+    width: 36px;
+    float: left;
+}
+
+.number {
+    height: 24px;
+    font-weight: bold;
+    font-size: 20px;
+}
+
+.number span {
+    padding-left: 3px;
+}
+
+.number-divider {
+    height: 14px;
+    background-color: black;
+    padding-top: 4px
+}
+
+.titles {
+    float: left;
+    width: 204px;
+    text-align: center;
+}
+
+.title {
+    height: 24px;
+    background-color: pink;
+}
+
+.title span {
+    padding-top: 2px;
+}
+
+.titles span {
+    display: inline-block;
+}
+
+.artist {
+    height: 18px;
+    font-size: 12px;
+    background-color: hotpink;
+}
+
+.artist span {
+    width: 140px;
+    background-color: white;
+    padding-top: 1px;
+    margin: 1px;
+}
+
+.triangle-right {
+	width: 0;
+	height: 0;
+	border-top: 5px solid transparent;
+	border-left: 24px solid red;
+	border-bottom: 5px solid transparent;
+    margin-left:8px;    
+}
