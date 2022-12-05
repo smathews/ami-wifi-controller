@@ -12,9 +12,7 @@
 
     function addSong() {
         songId = $(this).attr('id')
-        console.log(songId)
-
-        fetch("/add_song", {
+        fetch("/playlist/songs", {
             method: "POST",
             headers: {
                 "Contest-Type": "application/json",

@@ -63,7 +63,7 @@ ap.active(True)
 while ap.active() == False:
     pass
 
-print(ap.ifconfig())
+logger.info(ap.ifconfig())
 
 app = picoweb.WebApp("AMI Wifi Selector")
 
@@ -71,7 +71,7 @@ app = picoweb.WebApp("AMI Wifi Selector")
 # Needed during testing, maybe not for prod
 for file in os.listdir("templates"):
     if file[-3:] == ".py":
-        print("Deleteing template cache file: %s" % file)
+        logger.debug("Deleteing template cache file: %s" % file)
         os.remove("templates/%s" % file)
 
 # Override the template loader in pico, this is because it
@@ -84,7 +84,7 @@ def index(req, resp):
     yield from picoweb.start_response(resp)
     yield from app.render_template(resp, "titlestrips.tpl.html", (collection,))
 
-@app.route("/add_song")
+@app.route("/playlist/songs")
 def add_song(req, resp):
     if req.method != "POST":
         yield from picoweb.start_response(resp, status="405")
@@ -96,7 +96,9 @@ def add_song(req, resp):
     uasyncio.create_task(add_to_playlist(song))
 
     yield from picoweb.start_response(resp)
-    yield from resp.awrite(json.dumps({"success": "true"}))
+
+    #TODO: Return full song data
+    yield from resp.awrite(json.dumps({"song":song}))
 
 async def add_to_playlist(song):
     async with playlist as play:
@@ -107,7 +109,7 @@ async def apply_playlist():
         async with playlist as play:
             if len(play) > 0:
                 song = play.pop()
-                print(song)
+                logger.info("Adding song %d to jukebox" % song)
                 pos = get_pos_nums(song)
                 for p in pos:
                     leds[p].high()
