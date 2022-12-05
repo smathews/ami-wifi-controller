@@ -100,7 +100,7 @@ def add_song(req, resp):
 
 async def add_to_playlist(song):
     async with playlist as play:
-        play.append(song)
+        play.insert(0,song)
 
 async def apply_playlist():
     while True:
