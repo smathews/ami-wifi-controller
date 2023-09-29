@@ -1,0 +1,51 @@
+---
+plugins:
+- name: test-plugin
+  description: This is a test plugin.
+  created: 2017-02-27
+  company: IBM
+  updated: 2023-08-30
+  versions:
+  - version: 0.1.582
+    updated: 2022-09-15
+    binaries:
+    - platform: win32
+      url: https://plugins.cloud.ibm.com/downloads/bluemix-plugins/container-registry/0.1.582/container-registry-windows-386-0.1.582.exe
+      checksum: d0ec952a6162f1b6a9b510386be588f8b6330436
+      sha256_checksum: b9bbfecf4ce1142158d57658f91347fc8d8ae7ae2d861ef111b8e9f92bf2b5d9
+    - platform: win64
+      url: https://plugins.cloud.ibm.com/downloads/bluemix-plugins/container-registry/0.1.582/container-registry-windows-amd64-0.1.582.exe
+      checksum: ec211aa03bcbb5a8ec77dde08f810748282cc1f1
+      sha256_checksum: 233f0fc9d13a33aea5ce593d484913e9de668a8c50e6b3ab5b9b141f09ae41f1
+    - platform: linux32
+      url: https://plugins.cloud.ibm.com/downloads/bluemix-plugins/container-registry/0.1.582/container-registry-linux-386-0.1.582
+      checksum: 76ab45d250fa8d18efff15200930a88eb86004db
+      sha256_checksum: 09c181405644afd57d38e6e14b34ebe09ccbd702cc6e4f456a13802ad70f030a
+    - platform: linux64
+      url: https://plugins.cloud.ibm.com/downloads/bluemix-plugins/container-registry/0.1.582/container-registry-linux-amd64-0.1.582
+      checksum: d4c074687b6536c944ae22ef910d5f4c591dc811
+      sha256_checksum: b4524cc10fe112342cdd2dee1a17ca688b01aa79d8e088f399793c021913f870
+    - platform: osx
+      url: https://plugins.cloud.ibm.com/downloads/bluemix-plugins/container-registry/0.1.582/container-registry-darwin-amd64-0.1.582
+      checksum: 708556b68960afb1ece21991c142956bc85e4cfb
+      sha256_checksum: 1e9be43092c869c61470a00cc21972294be12ac7c22f836be0835fc1845e4ccc
+    - platform: osx-arm64
+      url: https://plugins.cloud.ibm.com/downloads/bluemix-plugins/container-registry/0.1.582/container-registry-darwin-arm64-0.1.582
+      checksum: e0c05bcc7aecdee099b39af1144e7ffd2e797db6
+      sha256_checksum: 0c5faf66dba3a4abca8a72ff5cbc59e27e56f362196d0628757467c9dd39c73d
+    - platform: ppc64le
+      url: https://plugins.cloud.ibm.com/downloads/bluemix-plugins/container-registry/0.1.582/container-registry-linux-ppc64le-0.1.582
+      checksum: 8a0b144b5cf9f02f94d81903586a4152c39ba830
+      sha256_checksum: c420236cc479d37f50fde2f251b15135fcc3cdb45399ef1750e8375e74a9003d
+    - platform: s390x
+      url: https://plugins.cloud.ibm.com/downloads/bluemix-plugins/container-registry/0.1.582/container-registry-linux-s390x-0.1.582
+      checksum: 5f6fe7d6dedba9fbcf79e3600acae8e945c62216
+      sha256_checksum: fc047df52349a8f3e93b61fd529e743b4744483cadaaa1762ed4d8c6139115ee
+    - platform: linux-arm64
+      url: https://plugins.cloud.ibm.com/downloads/bluemix-plugins/container-registry/0.1.582/container-registry-linux-arm64-0.1.582
+      checksum: 4551e8f2432bb104e3c48ef136838447a0d87f08
+      sha256_checksum: d86acf4553bc56cf401fcf2f02134169805446139f4c5cb4d067eb3d87d01c11
+  authors: 
+  aliases:
+  - cr
+  homepage: https://icr.io
